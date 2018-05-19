@@ -5,13 +5,36 @@
     <title>brainly challenge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://styleguide.brainly.com/134.2.1/style-guide.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="./css/welcomeWindowStyles.css">
     <link rel="stylesheet" href="./css/styles.css">
   </head>
   <body>
+    <div class="welcomeWindow" id="welcomeWindow">
+      <div class="sg-toplayer--with-bugbox sg-toplayer--medium welcomeWindow__container">
+        <h1 class="sg-text-bit sg-text-bit--large sg-text-bit--dark welcomeWindow__header">
+          Flashcards
+          <svg class="sg-subject-icon welcomeWindow__icon">
+            <use xlink:href="#icon-subject-logic"></use>
+          </svg>
+          app
+        </h1>
+      </div>
+      <div class="welcomeWindow__container welcomeWindow__container--large">
+        <h1 class="sg-text-bit sg-text-bit--large sg-text-bit--dark welcomeWindow__header">
+          Give your knowledge a try in this fabulous flashacrds app !
+        </h1>
+        <button id="buttonStart" class="sg-button-primary sg-button-primary--peach button">
+          get started
+        </button>
+        <svg class="sg-subject-icon">
+          <use xlink:href="#icon-subject-geography""</use>
+        </svg>
+      </div>
 
-    <div class="deck">
     </div>
-
+    <div class="deck">
+      <!-- all cards (tasks in form of cards) fetched from api are placed here -->
+    </div>
 
     <div class="footer">
       <div class="sg-flash footer__answer footer__answer--error">
@@ -26,6 +49,7 @@
       </div>
     </div>
     <script src="https://styleguide.brainly.com/images/icons-1b40deaa8d.js"></script>
+    <script src="https://styleguide.brainly.com/images/subjects-icons-0676dae371.js"></script>
     <script type="text/javascript" src="./js/script.js"></script>
   </body>
 </html>

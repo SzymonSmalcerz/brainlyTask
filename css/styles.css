@@ -31,9 +31,11 @@ body, html {
 
 .deck__card__question {
   flex-grow: 1;
-  width: 100%;
+  width: 90%;
+  padding: 5%;
   display: block;
-  height: 50%;
+  height: 40%;
+  text-align: center;
 }
 
 .deck__card__answer {

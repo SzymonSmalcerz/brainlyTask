@@ -5,6 +5,11 @@ window.onload = async function(){
   let wrongAnswer = document.querySelector(".footer__answer--error");
   let positiveAnswer = document.querySelector(".footer__answer--success");
 
+  let welcomeWindow = document.getElementById("welcomeWindow");
+  let buttonStart = document.getElementById("buttonStart");
+  buttonStart.addEventListener("click", (event) => {
+    welcomeWindow.style.display = "none";
+  });
   let data = await fetchData(urlWithData);
   let cardsArray = []; //array of dom element, containing tasks
   let deck = document.querySelector(".deck");
@@ -16,6 +21,13 @@ window.onload = async function(){
     let question = document.createElement("h1");
     question.className = "sg-text-bit sg-text-bit--small sg-text-bit--not-responsive deck__card__question";
     question.innerText = task.question;
+    //create random icon
+    // let iconSVG = document.createElement("svg");
+    // iconSVG.classList.add("sg-subject-icon");
+    // let randomIcon = document.createElement("use");
+    // randomIcon.setAttribute("xlink:href","#icon-subject-astronomy");
+    // iconSVG.appendChild(randomIcon);
+    // cardCointainer.appendChild(iconSVG);
     cardCointainer.appendChild(question);
     //answers
     task.answers.forEach(answer => {
