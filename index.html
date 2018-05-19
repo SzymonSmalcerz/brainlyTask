@@ -9,42 +9,59 @@
     <link rel="stylesheet" href="./css/styles.css">
   </head>
   <body>
-    <div class="welcomeWindow" id="welcomeWindow">
-      <div class="sg-toplayer--with-bugbox sg-toplayer--medium welcomeWindow__container">
-        <h1 class="sg-text-bit sg-text-bit--large sg-text-bit--dark welcomeWindow__header">
-          Flashcards
-          <svg class="sg-subject-icon welcomeWindow__icon">
-            <use xlink:href="#icon-subject-logic"></use>
-          </svg>
-          app
+    <div id="welcomeWindow">
+      <div class="sg-toplayer--with-bugbox sg-toplayer--medium flexContainer flexContainer--justify-end">
+        <h1 class="sg-text-bit sg-text-bit--large sg-text-bit--dark flexItem flexItem--header">
+            Flashcards app
         </h1>
+        <svg class="sg-subject-icon flexItem">
+          <use xlink:href="#icon-subject-logic"></use>
+        </svg>
       </div>
-      <div class="welcomeWindow__container welcomeWindow__container--large">
-        <h1 class="sg-text-bit sg-text-bit--large sg-text-bit--dark welcomeWindow__header">
+      <div class="flexContainer flexContainer--large">
+        <h1 class="sg-text-bit sg-text-bit--md sg-text-bit--dark flexItem flexItem--header">
           Give your knowledge a try in this fabulous flashacrds app !
         </h1>
-        <button id="buttonStart" class="sg-button-primary sg-button-primary--peach button">
+        <button id="buttonStart" class="sg-button-primary sg-button-primary--peach flexItem button button--red-blinking">
           get started
         </button>
-        <svg class="sg-subject-icon">
-          <use xlink:href="#icon-subject-geography""</use>
+        <svg class="sg-subject-icon flexItem">
+          <use xlink:href="#icon-subject-geography"></use>
         </svg>
       </div>
 
+    </div>
+    <div class="flexContainer flexContainer--row counter">
+      <div class="flexItem counter__item">
+        <h1 class="sg-text-bit sg-text-bit--small sg-text-bit--not-responsive counter__header--green">
+          good answers 0
+        </h1>
+      </div>
+      <div class="flexItem counter__item">
+        <h1 class="sg-text-bit sg-text-bit--warning sg-text-bit--small sg-text-bit--not-responsive">
+          wrong answers 0
+        </h1>
+      </div>
     </div>
     <div class="deck">
       <!-- all cards (tasks in form of cards) fetched from api are placed here -->
     </div>
 
     <div class="footer">
-      <div class="sg-flash footer__answer footer__answer--error">
-        <div class="sg-flash__message sg-flash__message--error">
-          <div class="sg-text sg-text--small sg-text--light sg-text--emphasised">wrong answer</div>
+      <div class="sg-flash footer_answerContainer">
+        <div id="footer__answer--error" class="sg-flash__message sg-flash__message--error footer__answer">
+          <div class="sg-text sg-text--small sg-text--light sg-text--emphasised">
+            <h1 class="sg-text-bit sg-text-bit--small sg-text-bit--dark sg-text-bit--not-responsive">
+              wrong answer
+            </h1>
+          </div>
         </div>
-      </div>
-      <div class="sg-flash footer__answer footer__answer--success">
-        <div class="sg-flash__message sg-flash__message--success">
-          <div class="sg-text sg-text--small sg-text--light sg-text--emphasised">I have never seen a code like this before...</div>
+        <div id="footer__answer--success" class="sg-flash__message sg-flash__message--success footer__answer">
+          <div class="sg-text sg-text--small sg-text--light sg-text--emphasised">
+            <h1 class="sg-text-bit sg-text-bit--small sg-text-bit--dark sg-text-bit--not-responsive">
+              correct answer
+            </h1>
+          </div>
         </div>
       </div>
     </div>

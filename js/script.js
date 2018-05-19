@@ -2,13 +2,14 @@
 window.onload = async function(){
 
   let urlWithData = 'https://gist.githubusercontent.com/vergilius/6d869a7448e405cb52d782120b77b82c/raw/e75dc7c19b918a9f0f5684595899dba2e5ad4f43/history-flashcards.json';
-  let wrongAnswer = document.querySelector(".footer__answer--error");
-  let positiveAnswer = document.querySelector(".footer__answer--success");
+  let wrongAnswer = document.querySelector("#footer__answer--error");
+  let positiveAnswer = document.querySelector("#footer__answer--success");
 
   let welcomeWindow = document.getElementById("welcomeWindow");
   let buttonStart = document.getElementById("buttonStart");
   buttonStart.addEventListener("click", (event) => {
-    welcomeWindow.style.display = "none";
+    // welcomeWindow.style.display = "none";
+    welcomeWindow.classList.add("welcomeWindow--slide");
   });
   let data = await fetchData(urlWithData);
   let cardsArray = []; //array of dom element, containing tasks
@@ -47,20 +48,20 @@ window.onload = async function(){
 
   function handleWrongAnswer(event){
     let card = event.target.parentElement;
-    card.classList.add('deck__card--wrong');
+    card.classList.add('deck__card--wrongAnswer');
     wrongAnswer.style.display = "block";
     setTimeout(() => {
       let parentElement = card.parentElement;
       parentElement.removeChild(card);
       parentElement.insertBefore(card, parentElement.children[0]);
-      card.classList.remove('deck__card--wrong');
+      card.classList.remove('deck__card--wrongAnswer');
       wrongAnswer.style.display = "none";
     },1000)
   }
 
   function handleCorrectAnswer(event){
     let card = event.target.parentElement;
-    card.classList.add('deck__card--positive');
+    card.classList.add('deck__card--positiveAnswer');
     positiveAnswer.style.display = "block";
     setTimeout(() => {
       let parentElement = card.parentElement;
