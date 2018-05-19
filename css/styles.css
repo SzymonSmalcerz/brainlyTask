@@ -1,3 +1,98 @@
-body {
-  background-color: red;
+body, html {
+  height: 100%;
+  background-color: #abe1ff
+}
+.deck {
+  position: relative;
+  width : 80%;
+  height: 80%;
+  min-height: 80%;
+  transform: translate(12.5%,12.5%);
+  background-color: #FFFFFF;
+  border-radius: 15px;
+}
+
+.deck__card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  border-radius: inherit;
+}
+
+.deck__card--wrong {
+  transform-origin: top right;
+  animation-name: wrongAnswer;
+  animation-duration: 1.0s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+
+@keyframes wrongAnswer {
+  0% {
+    z-index: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #ff796b;
+  }
+  50% {
+    left: -105%;
+    top: 30%;
+    z-index: 0;
+    transform: rotateZ(50deg);
+    background-color: #ffb3ae;
+  }
+  51% {
+    z-index: -1;
+  }
+  100% {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #ff796b;
+  }
+}
+
+.deck__card--positive {
+  animation-name: positiveAnswerAnimation;
+  animation-duration: 1.0s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  position: absolute;
+}
+
+@keyframes positiveAnswerAnimation {
+  0% {
+    top: 0;
+    background-color: #ddf7e5;
+  }
+
+  20% {
+    top: 20%;
+    background-color: #b4efc2;
+  }
+
+  100% {
+    top : -300%;
+    background-color: #53cf92;
+    opacity: 0;
+  }
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.footer__answer {
+  font-size: 1.5rem;
+  transition: 2s;
+  display: none;
 }
