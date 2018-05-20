@@ -26,9 +26,6 @@ window.onload = async function(){
 
 
   data.forEach(task => {
-    if (Math.random() < 0.75) {
-      return;
-    }
     updateRemaininQuestionsElement(1);
     //card container
     let cardCointainer = document.createElement("div");
