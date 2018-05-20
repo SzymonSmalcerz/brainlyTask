@@ -10,6 +10,9 @@ window.onload = async function(){
   buttonStart.addEventListener("click", (event) => {
     // welcomeWindow.style.display = "none";
     welcomeWindow.classList.add("welcomeWindow--slide");
+    setTimeout(() => {
+      welcomeWindow.parentElement.removeChild(welcomeWindow);
+    },1300);
   });
   let data = await fetchData(urlWithData);
   let cardsArray = []; //array of dom element, containing tasks
@@ -17,37 +20,35 @@ window.onload = async function(){
   data.forEach(task => {
     //card container
     let cardCointainer = document.createElement("div");
+    cardCointainer.classList.add("flexContainer");
+    cardCointainer.classList.add("flexContainer--nowrap");
     cardCointainer.classList.add("deck__card");
     //question
     let question = document.createElement("h1");
-    question.className = "sg-text-bit sg-text-bit--small sg-text-bit--not-responsive deck__card__question";
+    question.className = "sg-text-bit sg-text-bit--small sg-text-bit--not-responsive flexItem flexItem--header flexItem--halfHeight";
     question.innerText = task.question;
-    //create random icon
-    // let iconSVG = document.createElement("svg");
-    // iconSVG.classList.add("sg-subject-icon");
-    // let randomIcon = document.createElement("use");
-    // randomIcon.setAttribute("xlink:href","#icon-subject-astronomy");
-    // iconSVG.appendChild(randomIcon);
-    // cardCointainer.appendChild(iconSVG);
     cardCointainer.appendChild(question);
     //answers
+    let answersContainer = document.createElement("div");
+    answersContainer.className ="flexItem flexItem--halfHeight flexContainer flexContainer--row";
     task.answers.forEach(answer => {
       let button = document.createElement("button");
-      button.className = "sg-button-primary sg-button-primary--alt deck__card__answer";
+      button.className = "sg-button-primary sg-button-primary--alt flexItem button";
       button.innerText = answer.answer;
       if (answer.correct){
         button.addEventListener("click", handleCorrectAnswer);
       } else {
         button.addEventListener("click", handleWrongAnswer);
       }
-      cardCointainer.appendChild(button);
+      answersContainer.appendChild(button);
     });
+    cardCointainer.appendChild(answersContainer);
     deck.appendChild(cardCointainer);
   });
 
 
   function handleWrongAnswer(event){
-    let card = event.target.parentElement;
+    let card = event.target.parentElement.parentElement;
     card.classList.add('deck__card--wrongAnswer');
     wrongAnswer.style.display = "block";
     setTimeout(() => {
@@ -56,11 +57,11 @@ window.onload = async function(){
       parentElement.insertBefore(card, parentElement.children[0]);
       card.classList.remove('deck__card--wrongAnswer');
       wrongAnswer.style.display = "none";
-    },1000)
+    },2100)
   }
 
   function handleCorrectAnswer(event){
-    let card = event.target.parentElement;
+    let card = event.target.parentElement.parentElement;
     card.classList.add('deck__card--positiveAnswer');
     positiveAnswer.style.display = "block";
     setTimeout(() => {
@@ -68,7 +69,7 @@ window.onload = async function(){
       parentElement.removeChild(card);
       delete card;
       positiveAnswer.style.display = "none";
-    },1000)
+    },2100)
   }
 
   function fetchData(url){

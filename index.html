@@ -5,33 +5,33 @@
     <title>brainly challenge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://styleguide.brainly.com/134.2.1/style-guide.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="./css/welcomeWindowStyles.css">
     <link rel="stylesheet" href="./css/styles.css">
   </head>
   <body>
     <div id="welcomeWindow">
-      <div class="sg-toplayer--with-bugbox sg-toplayer--medium flexContainer flexContainer--justify-end">
-        <h1 class="sg-text-bit sg-text-bit--large sg-text-bit--dark flexItem flexItem--header">
-            Flashcards app
-        </h1>
-        <svg class="sg-subject-icon flexItem">
-          <use xlink:href="#icon-subject-logic"></use>
-        </svg>
+      <div class="welcomeWindow__container">
+        <div class="sg-toplayer--with-bugbox sg-toplayer--medium flexContainer flexContainer--justify-end">
+          <h1 class="sg-text-bit sg-text-bit--large sg-text-bit--dark flexItem flexItem--header">
+              Flashcards app
+          </h1>
+          <svg class="sg-subject-icon flexItem">
+            <use xlink:href="#icon-subject-logic"></use>
+          </svg>
+        </div>
+        <div class="flexContainer flexContainer--large">
+          <h1 class="sg-text-bit sg-text-bit--md sg-text-bit--dark flexItem flexItem--header">
+            Give your knowledge a try in this fabulous flashacrds app !
+          </h1>
+          <button id="buttonStart" class="sg-button-primary sg-button-primary--peach flexItem button button--red-blinking">
+            get started
+          </button>
+          <svg class="sg-subject-icon flexItem">
+            <use xlink:href="#icon-subject-geography"></use>
+          </svg>
+        </div>
       </div>
-      <div class="flexContainer flexContainer--large">
-        <h1 class="sg-text-bit sg-text-bit--md sg-text-bit--dark flexItem flexItem--header">
-          Give your knowledge a try in this fabulous flashacrds app !
-        </h1>
-        <button id="buttonStart" class="sg-button-primary sg-button-primary--peach flexItem button button--red-blinking">
-          get started
-        </button>
-        <svg class="sg-subject-icon flexItem">
-          <use xlink:href="#icon-subject-geography"></use>
-        </svg>
-      </div>
-
     </div>
-    <div class="flexContainer flexContainer--row counter">
+    <div class="flexContainer flexContainer--row flexContainer--nowrap counter">
       <div class="flexItem counter__item">
         <h1 class="sg-text-bit sg-text-bit--small sg-text-bit--not-responsive counter__header--green">
           good answers 0
@@ -48,7 +48,7 @@
     </div>
 
     <div class="footer">
-      <div class="sg-flash footer_answerContainer">
+      <div class="sg-flash footer__answerContainer">
         <div id="footer__answer--error" class="sg-flash__message sg-flash__message--error footer__answer">
           <div class="sg-text sg-text--small sg-text--light sg-text--emphasised">
             <h1 class="sg-text-bit sg-text-bit--small sg-text-bit--dark sg-text-bit--not-responsive">
