@@ -71,7 +71,7 @@
           </div>
 
         </div>
-        <button class="sg-button-primary flexItem">
+        <button id="startAgainButton" class="sg-button-primary flexItem">
           try one more time!
         </button>
       </div>
@@ -79,21 +79,8 @@
     </div>
 
     <div class="footer">
-      <div class="sg-flash footer__answerContainer">
-        <div id="footer__answer--error" class="sg-flash__message sg-flash__message--error footer__answer">
-          <div class="sg-text sg-text--small sg-text--light sg-text--emphasised">
-            <h1 class="sg-text-bit sg-text-bit--small sg-text-bit--dark sg-text-bit--not-responsive">
-              wrong answer
-            </h1>
-          </div>
-        </div>
-        <div id="footer__answer--success" class="sg-flash__message sg-flash__message--success footer__answer">
-          <div class="sg-text sg-text--small sg-text--light sg-text--emphasised">
-            <h1 class="sg-text-bit sg-text-bit--small sg-text-bit--dark sg-text-bit--not-responsive">
-              correct answer
-            </h1>
-          </div>
-        </div>
+      <div id="messageContainer" class="sg-flash footer__answerContainer">
+        <!-- correct answer / wrong answer banners are placed here -->
       </div>
     </div>
     <script src="https://styleguide.brainly.com/images/icons-1b40deaa8d.js"></script>
