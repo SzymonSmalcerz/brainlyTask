@@ -11,7 +11,7 @@
     <div id="welcomeWindow">
       <div class="welcomeWindow__container">
         <div class="sg-toplayer--with-bugbox sg-toplayer--medium flexContainer flexContainer--justify-end">
-          <h1 class="sg-text-bit sg-text-bit--large sg-text-bit--dark flexItem flexItem--header">
+          <h1 class="sg-text-bit sg-text-bit--large sg-text-bit--dark flexItem flexItem__header">
               Flashcards app
           </h1>
           <svg class="sg-subject-icon flexItem">
@@ -19,8 +19,8 @@
           </svg>
         </div>
         <div class="flexContainer flexContainer--large">
-          <h1 class="sg-text-bit sg-text-bit--md sg-text-bit--dark flexItem flexItem--header">
-            Give your knowledge a try in this fabulous flashacrds app !
+          <h1 class="sg-text-bit sg-text-bit--md sg-text-bit--dark flexItem flexItem__header">
+            Give your knowledge a try in this fabulous flashcards app !
           </h1>
           <button id="buttonStart" class="sg-button-primary sg-button-primary--peach flexItem button button--red-blinking">
             get started
@@ -33,17 +33,48 @@
     </div>
     <div class="flexContainer flexContainer--row flexContainer--nowrap counter">
       <div class="flexItem counter__item">
-        <h1 class="sg-text-bit sg-text-bit--small sg-text-bit--not-responsive counter__header--green">
-          good answers 0
-        </h1>
-      </div>
-      <div class="flexItem counter__item">
-        <h1 class="sg-text-bit sg-text-bit--warning sg-text-bit--small sg-text-bit--not-responsive">
-          wrong answers 0
+        <h1 class="sg-text-bit sg-text-bit--small sg-text-bit--not-responsive header--black">
+          remaining questions : <span id="remainingQuestions"> 0 <span>
         </h1>
       </div>
     </div>
     <div class="deck">
+      <div id="finishCard" class="flexContainer deck__card deck__card--small deck__card--hidden">
+        <h1 class="sg-text-bit sg-text-bit--small sg-text-bit--dark sg-text-bit--not-responsive flexItem">
+          Congratulations!
+        </h1>
+        <h1 class="sg-text-bit sg-text-bit--small sg-text-bit--dark sg-text-bit--not-responsive flexItem">
+          You have just finished flashcards challenge!
+        </h1>
+        <svg class="sg-subject-icon flexItem">
+          <use xlink:href="#icon-subject-egzam"></use>
+        </svg>
+
+
+        <div class="flexItem flexItem--halfHeight flexContainer--row">
+          <h1 class="sg-text-bit sg-text-bit--small sg-text-bit--dark sg-text-bit--not-responsive flexItem flexItem--marginBottom">
+            Your answers:
+          </h1>
+          <div class="flexItem flexItem--marginBottom flexContainer">
+            <h1 class="sg-text-bit sg-text-bit--small sg-text-bit--dark sg-text-bit--not-responsive flexItem header--green">
+              <svg class="sg-icon sg-icon--mustard sg-icon--x24">
+                <use xlink:href="#icon-cup"></use>
+              </svg>
+              Positive: <span id="positiveAnswers">0<span>
+            </h1>
+            <h1 class="sg-text-bit sg-text-bit--small sg-text-bit--dark sg-text-bit--not-responsive flexItem header--red">
+              <svg class="sg-icon sg-icon--peach sg-icon--x24">
+                <use xlink:href="#icon-x"></use>
+              </svg>
+              Wrong: <span id="negativeAnswers">0<span>
+            </h1>
+          </div>
+
+        </div>
+        <button class="sg-button-primary flexItem">
+          try one more time!
+        </button>
+      </div>
       <!-- all cards (tasks in form of cards) fetched from api are placed here -->
     </div>
 

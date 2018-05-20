@@ -4,9 +4,14 @@ window.onload = async function(){
   let urlWithData = 'https://gist.githubusercontent.com/vergilius/6d869a7448e405cb52d782120b77b82c/raw/e75dc7c19b918a9f0f5684595899dba2e5ad4f43/history-flashcards.json';
   let wrongAnswer = document.querySelector("#footer__answer--error");
   let positiveAnswer = document.querySelector("#footer__answer--success");
-
+  let numOfRemainingQuestions = 0;
+  let remainingQuestionsElement = document.getElementById("remainingQuestions");
   let welcomeWindow = document.getElementById("welcomeWindow");
   let buttonStart = document.getElementById("buttonStart");
+  let userAnswers = {
+    positive : 0,
+    negative : 0
+  };
   buttonStart.addEventListener("click", (event) => {
     // welcomeWindow.style.display = "none";
     welcomeWindow.classList.add("welcomeWindow--slide");
@@ -17,7 +22,14 @@ window.onload = async function(){
   let data = await fetchData(urlWithData);
   let cardsArray = []; //array of dom element, containing tasks
   let deck = document.querySelector(".deck");
+
+
+
   data.forEach(task => {
+    if (Math.random() < 0.75) {
+      return;
+    }
+    updateRemaininQuestionsElement(1);
     //card container
     let cardCointainer = document.createElement("div");
     cardCointainer.classList.add("flexContainer");
@@ -25,7 +37,7 @@ window.onload = async function(){
     cardCointainer.classList.add("deck__card");
     //question
     let question = document.createElement("h1");
-    question.className = "sg-text-bit sg-text-bit--small sg-text-bit--not-responsive flexItem flexItem--header flexItem--halfHeight";
+    question.className = "sg-text-bit sg-text-bit--small sg-text-bit--not-responsive flexItem flexItem__header flexItem__header--blue flexItem--halfHeight ";
     question.innerText = task.question;
     cardCointainer.appendChild(question);
     //answers
@@ -47,9 +59,24 @@ window.onload = async function(){
   });
 
 
+  function createFinishCard(){
+
+  }
+
+  function updateRemaininQuestionsElement(val){
+    let curr = Number.parseInt(remainingQuestionsElement.textContent);
+    curr += val;
+    numOfRemainingQuestions = curr;
+    remainingQuestionsElement.textContent = curr;
+  }
+
+
   function handleWrongAnswer(event){
+    userAnswers.negative += 1;
     let card = event.target.parentElement.parentElement;
-    card.classList.add('deck__card--wrongAnswer');
+    if(numOfRemainingQuestions > 1){
+      card.classList.add('deck__card--wrongAnswer');
+    }
     wrongAnswer.style.display = "block";
     setTimeout(() => {
       let parentElement = card.parentElement;
@@ -60,15 +87,29 @@ window.onload = async function(){
     },2100)
   }
 
+  function updateFinishCard(){
+    let positiveAnswers = document.getElementById("positiveAnswers");
+    let negativeAnswers = document.getElementById("negativeAnswers");
+    positiveAnswers.innerText = userAnswers.positive;
+    negativeAnswers.innerText = userAnswers.negative;
+  }
   function handleCorrectAnswer(event){
+    userAnswers.positive += 1;
     let card = event.target.parentElement.parentElement;
     card.classList.add('deck__card--positiveAnswer');
     positiveAnswer.style.display = "block";
+    if(numOfRemainingQuestions === 1) {
+      updateFinishCard()
+    }
     setTimeout(() => {
       let parentElement = card.parentElement;
-      parentElement.removeChild(card);
-      delete card;
-      positiveAnswer.style.display = "none";
+      if(parentElement){
+        updateRemaininQuestionsElement(-1);
+        parentElement.removeChild(card);
+        delete card;
+        positiveAnswer.style.display = "none";
+      }
+
     },2100)
   }
 

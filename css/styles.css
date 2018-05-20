@@ -31,28 +31,21 @@ body, html {
   animation-timing-function: linear;
 }
 
-@keyframes slideAnimation {
-  0% {
-    display: block;
-  }
-  100% {
-    transform: scale(10.0);
-    opacity: 0;
-  }
-
-}
-
 .flexItem {
   display: block;
   flex-grow: 1;
 }
 
-.flexItem--header {
+.flexItem__header {
   text-align: center;
   font-size: 30px;
   width: 90%;
   padding: 0% 5%;
   margin: 0;
+}
+
+.flexItem__header--blue {
+  color : #57b2f8;
 }
 
 .flexItem--halfHeight {
@@ -62,6 +55,10 @@ body, html {
   margin-bottom: 10%;
   padding-bottom: 0%;
   padding-top: 0%;
+}
+
+.flexItem--marginBottom {
+  margin-bottom: 5%;
 }
 
 .flexContainer {
@@ -87,12 +84,19 @@ body, html {
   height: 70%;
 }
 
+.flexContainer--xxlarge {
+  height: 80%;
+}
+
 .button {
   width: 40%;
   margin: 0% 5%;
   flex-basis: 300px;
   max-width: 300px;
   max-height: 40px;
+  min-height: 30px;
+  min-width: 150px;
+  text-align: center;
 }
 
 .button--red-blinking {
@@ -103,18 +107,6 @@ body, html {
   animation-iteration-count: infinite;
 }
 
-@keyframes redBlinkingAnimation {
-  0% {
-    background-color: #ff796b;
-  }
-  50% {
-    background-color: #ffb3ae;
-  }
-  100% {
-    background-color: #ff796b;
-  }
-}
-
 .counter {
   height: 10%;
 }
@@ -123,8 +115,16 @@ body, html {
   text-align: center;
 }
 
-.counter__header--green {
+.header--green {
   color : #53cf92;
+}
+
+.header--red {
+  color : #db8d6b;
+}
+
+.header--black {
+  color : #020a1b;
 }
 
 .deck {
@@ -148,6 +148,19 @@ body, html {
   border-radius: inherit;
   background-color: #FFFFFF;
   z-index: 1;
+  text-align: center;
+}
+
+.deck__card--hidden {
+  z-index: 0;
+}
+
+.deck__card--small {
+  width: 80%;
+  left: 10%;
+  height: 80%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .deck__card--wrongAnswer {
@@ -157,6 +170,95 @@ body, html {
   animation-fill-mode: both;
   animation-iteration-count: 1;
   animation-timing-function: linear;
+}
+
+.deck__card--positiveAnswer {
+  animation-name: positiveAnswerAnimation;
+  animation-duration: 2.0s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  position: absolute;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  max-height: 60px;
+  z-index: 1;
+}
+
+.footer__answerContainer {
+  height: 100%;
+}
+
+.footer__answer {
+  transition: 2s;
+  height: 100%;
+  display: none;
+  text-align: center;
+  animation-name: showAndWanishAnimation;
+  animation-duration: 2.0s;
+  animation-fill-mode: both;
+}
+
+@keyframes positiveAnswerAnimation {
+  0% {
+    top: 0;
+    background-color: #ddf7e5;
+  }
+  30% {
+    top: 0%;
+    background-color: #b4efc2;
+  }
+  50% {
+    top: 10%;
+    background-color: #b4efc2;
+  }
+  100% {
+    top : -300%;
+    background-color: #53cf92;
+  }
+}
+
+@keyframes showAndWanishAnimation {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slideAnimation {
+  0% {
+    display: block;
+  }
+  100% {
+    transform: scale(10.0);
+    opacity: 0;
+  }
+}
+
+@keyframes redBlinkingAnimation {
+  0% {
+    background-color: #ff796b;
+  }
+  50% {
+    background-color: #ffb3ae;
+  }
+  100% {
+    background-color: #ff796b;
+  }
 }
 
 @keyframes wrongAnswerAnimation {
@@ -190,78 +292,9 @@ body, html {
   }
 }
 
-.deck__card--positiveAnswer {
-  animation-name: positiveAnswerAnimation;
-  animation-duration: 2.0s;
-  animation-fill-mode: both;
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
-  position: absolute;
-}
-
-@keyframes positiveAnswerAnimation {
-  0% {
-    top: 0;
-    background-color: #ddf7e5;
-  }
-  30% {
-    top: 0%;
-    background-color: rgba(200,240,194,0.7); /* #b4efc2; */
-  }
-  50% {
-    top: 10%;
-    opacity: 1;
-    background-color: #b4efc2;
-  }
-  100% {
-    top : -300%;
-    background-color: #53cf92;
-    opacity: 0;
-  }
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 20%;
-  max-height: 60px;
-  z-index: 1;
-}
-
-.footer__answerContainer {
-  height: 100%;
-}
-
-.footer__answer {
-  transition: 2s;
-  height: 100%;
-  display: none;
-  text-align: center;
-  animation-name: showAndWanishAnimation;
-  animation-duration: 2.0s;
-  animation-fill-mode: both;
-}
-
-@keyframes showAndWanishAnimation {
-  0% {
-    opacity: 0;
-  }
-  40% {
-    opacity: 1;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-
 @media screen and (min-width:768px) {
-  .welcomeWindow__container .flexItem--header {
+  .welcomeWindow__container .flexItem__header {
     font-size: 2.4rem;
+
   }
 }
