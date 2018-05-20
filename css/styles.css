@@ -56,11 +56,9 @@ body, html {
 }
 
 .flexItem--halfHeight {
-  height: 30%;
-  max-height: 30%;
-  margin-top: 10%;
-  margin-bottom: 10%;
-  padding-bottom: 0%;
+  height: 50%;
+  max-height: 50%;
+  padding-top: 15%;
   padding-top: 0%;
 }
 
@@ -409,8 +407,8 @@ body, html {
 @media screen and (min-height:360px) {
   .deck__card {
     height: 100%;
-    padding-top: 10%;
-    padding-bottom: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
   }
 }
 
