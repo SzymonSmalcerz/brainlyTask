@@ -92,8 +92,9 @@ window.onload = async function(){
   function handleWrongAnswer(event){
     userAnswers.negative += 1;
     let card = event.target.parentElement.parentElement;
-    if(cardsArray.length > 1){
-      card.classList.add('deck__card--wrongAnswer');
+    card.classList.add('deck__card--wrongAnswer');
+    if(cardsArray.length === 1){
+      card.classList.add('deck__card--wrongAnswer--static');
     }
     addFooterMessage("wrong");
     setTimeout(() => {
@@ -164,7 +165,7 @@ window.onload = async function(){
     if(message == "wrong"){
       answerContener.className = "sg-flash__message sg-flash__message--error footer__answer";
     } else{ // correct answer
-      answerContener.className = "sg-flash__message sg-flash__message--success footer__answer";
+      answerContener.className = "sg-flash__message sg-flash__message--success footer__answer footer__answer--correct";
     };
     let headerContainer = document.createElement("div");
     headerContainer.className = "sg-text sg-text--small sg-text--light sg-text--emphasised";
